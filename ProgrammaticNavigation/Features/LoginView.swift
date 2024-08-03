@@ -8,11 +8,20 @@
 import SwiftUI
 
 struct LoginView: View {
+    @Environment(Router.self) private var router
+    let title: String
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            Text(title)
+            Button("Go to home") {
+                router.navigate(to_: .home("I came from LoginView"))
+            }
+        }
+        
     }
 }
 
 #Preview {
-    LoginView()
+    LoginView(title: "Login View")
+        .environment(Router())
 }

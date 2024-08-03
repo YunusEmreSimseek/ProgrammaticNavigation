@@ -8,11 +8,23 @@
 import SwiftUI
 
 struct HomeView: View {
+    @Environment(Router.self) private var router
+    let title: String
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            Text(title)
+        }
+        .toolbar(content: {
+            ToolbarItem {
+                Button("Go to root") {
+                    router.navigateToRoot()
+                }
+            }
+        })
     }
 }
 
 #Preview {
-    HomeView()
+    HomeView(title: "Homeeee")
+        .environment(Router())
 }
